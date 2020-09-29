@@ -89,7 +89,6 @@ public class TodoController {
             return new ResponseEntity<>("존재하지 않는 Todo", HttpStatus.BAD_REQUEST);
         } else {
             Todo todo = optionalTodo.get();
-            System.out.println("여기다 여기 쮸발 쮸발" + req.getDescription());
             todo.putTodo(req);
             Todo savedTodo = todoRepository.save(todo);
             WebMvcLinkBuilder self = WebMvcLinkBuilder.linkTo(TodoController.class).slash(savedTodo.getIdx());
