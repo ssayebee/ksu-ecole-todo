@@ -8,17 +8,20 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Builder
 @Getter
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class TodoPostReqDto {
+@AllArgsConstructor
+public class TodoReqDto {
     private String description;
+
+    private Boolean status;
 
     public Todo toEntity() {
         return Todo.builder()
                 .description(this.description)
                 .status(false)
-                .createdDate(LocalDateTime.now()).build();
+                .createdDate(LocalDateTime.now())
+                .build();
     }
 }

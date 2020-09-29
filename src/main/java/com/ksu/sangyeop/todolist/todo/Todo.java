@@ -1,5 +1,6 @@
 package com.ksu.sangyeop.todolist.todo;
 
+import com.ksu.sangyeop.todolist.todo.dto.TodoReqDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,5 +26,16 @@ public class Todo implements Serializable {
     private LocalDateTime createdDate;
 
     private LocalDateTime updatedDate;
+
+    public void toggleTodo() {
+        this.status = !this.status;
+        this.updatedDate = LocalDateTime.now();
+    }
+
+    public void putTodo(TodoReqDto req) {
+        this.description = req.getDescription();
+        this.status = req.getStatus();
+        this.updatedDate = LocalDateTime.now();
+    }
 
 }
